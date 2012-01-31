@@ -1,6 +1,6 @@
-var App = Em.Application.create();
+var Fmber = Em.Application.create();
 
-App.MyView = Em.View.extend({
+Fmber.MyView = Em.View.extend({
   mouseDown: function() {
     window.alert("hello world!");
   }
