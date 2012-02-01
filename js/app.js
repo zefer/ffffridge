@@ -12,6 +12,7 @@ Fmber.imagesController = Em.ArrayProxy.create({
     this.pushObject(image);
   },
 
+  // display the images using Masonry
   display: function() {
   	setTimeout(function(){
 	  	var $container = $('#images');
@@ -22,11 +23,11 @@ Fmber.imagesController = Em.ArrayProxy.create({
 					isAnimated: true
 			  });
 			});
-		}, 500);
+		}, 100);
   },
 
+  // load images from ffffound.com via YQL
   updateImages: function() {
-  	// load images from ffffound.com via YQL
 		yql = "http://query.yahooapis.com/v1/public/yql?q=select%20title%2C%20link%2C%20description%2C%20author%2C%20pubDate%2C%20media%3Acontent%2C%20media%3Athumbnail%2C%20ffffound%3Asavedby%20from%20rss%20where%20url%3D%22http%3A%2F%2Ffeeds.feedburner.com%2Fffffound%2Feveryone%22&format=json&callback=?";
 		$.getJSON(yql, function(data) {
 			data.query.results.item.forEach(function(item) {
@@ -39,3 +40,8 @@ Fmber.imagesController = Em.ArrayProxy.create({
 });
 
 Fmber.imagesController.updateImages();
+
+// reload the page every 3 minutes - quick and ddddddirty
+setInterval(function(){
+	window.location = self.location;
+}, 180000);
