@@ -11,6 +11,19 @@ Fmber.imagesController = Em.ArrayProxy.create({
     var image = Fmber.Image.create({ src: src });
     this.pushObject(image);
   },
+
+  display: function() {
+  	setTimeout(function(){
+	  	var $container = $('#images');
+			$container.imagesLoaded( function(){
+			  $container.masonry({
+			    itemSelector : '.image-item',
+			    columnWidth : 0,
+					isAnimated: true
+			  });
+			});
+		}, 500);
+  }
 });
 
 // load images from ffffound.com via YQL
@@ -19,4 +32,6 @@ $.getJSON(yql, function(data) {
 	data.query.results.item.forEach(function(item) {
 	  Fmber.imagesController.addImage(item.content.url);
 	});
+
+	Fmber.imagesController.display();
 });
