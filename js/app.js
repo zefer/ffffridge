@@ -1,14 +1,14 @@
-var Fmber = Em.Application.create();
+var Fridge = Em.Application.create();
 
-Fmber.Image = Em.Object.extend({
+Fridge.Image = Em.Object.extend({
   src: null
 });
 
-Fmber.imagesController = Em.ArrayProxy.create({
+Fridge.imagesController = Em.ArrayProxy.create({
   content: [],
 
   addImage: function(src) {
-    var image = Fmber.Image.create({ src: src });
+    var image = Fridge.Image.create({ src: src });
     this.pushObject(image);
   },
 
@@ -31,15 +31,15 @@ Fmber.imagesController = Em.ArrayProxy.create({
 		yql = "http://query.yahooapis.com/v1/public/yql?q=select%20title%2C%20link%2C%20description%2C%20author%2C%20pubDate%2C%20media%3Acontent%2C%20media%3Athumbnail%2C%20ffffound%3Asavedby%20from%20rss%20where%20url%3D%22http%3A%2F%2Ffeeds.feedburner.com%2Fffffound%2Feveryone%22&format=json&callback=?";
 		$.getJSON(yql, function(data) {
 			data.query.results.item.forEach(function(item) {
-			  Fmber.imagesController.addImage(item.content.url);
+			  Fridge.imagesController.addImage(item.content.url);
 			});
 
-			Fmber.imagesController.display();
+			Fridge.imagesController.display();
 		});
   }
 });
 
-Fmber.imagesController.updateImages();
+Fridge.imagesController.updateImages();
 
 // reload the page every 3 minutes - quick and ddddddirty
 setInterval(function(){
