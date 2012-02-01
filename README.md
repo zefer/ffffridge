@@ -1,12 +1,12 @@
 # ffffridge
 
-Grabs images from ffffound.com and displays them using [Masonry](http://masonry.desandro.com/).
+Grabs images from [ffffound.com](http://ffffound.com) and displays them using [Masonry](http://masonry.desandro.com/).
 
 A simple [Ember.js](http://emberjs.com/) experiment.
 
 Any suggestions for improvement, please fork & edit!
 
-## libraries
+## Libraries
 
 * [Ember.js](http://emberjs.com/) JavaScript application framework
 * [YQL](http://developer.yahoo.com/yql/) Used to fetch the [ffffound.com](http://ffffound.com) rss feed as JSONP
@@ -14,10 +14,10 @@ Any suggestions for improvement, please fork & edit!
 * [jQuery](http://jquery.com/)
 * [Masonry](masonry.desandro.com) (jQuery plugin) Pinterest-like column display via a jQuery plugin
 
-## why?
+## Why?
 
-It's just a simple way to display some interesting images on our music jukebox monitor in the office.
+To try Ember.js and to display some interesting images on our music jukebox monitor in the office!
 
-## see it
+## See it
 
 Images update every 3 minutes: [http://ffffridge.heroku.com/](http://ffffridge.heroku.com/)
