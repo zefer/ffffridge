@@ -9,3 +9,7 @@ Any suggestions for improvement, please fork & edit!
 ## why?
 
 It's just a simple way to display some interesting images on our music jukebox monitor in the office.
+
+## see it
+
+Images update every 3 minutes: (http://ffffridge.heroku.com/)[http://ffffridge.heroku.com/]
