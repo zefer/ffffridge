@@ -1,3 +1,7 @@
-*Don't clone this repo, download instead!*
+# ffffridge
 
-[https://github.com/emberjs/starter-kit/downloads]
+Grabs images from ffffound.com and displays them using [Masonry](http://masonry.desandro.com/).
+
+A simple [Ember.js](http://emberjs.com/) experiment.
+
+Any suggestions for improvement, please fork & edit!
