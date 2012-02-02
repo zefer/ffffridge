@@ -24,4 +24,5 @@ Images update every 3 minutes: [http://ffffridge.heroku.com/](http://ffffridge.h
 
 ## Todo
 
-Update images by inserting new ones into the top of the layout rather than a full (lazy cop out!) page refresh
+* Update images by inserting new ones into the top of the layout rather than a full (lazy!) page refresh
+* Find more image sources and use Yahoo Pipes to merge them into a single RSS feed
