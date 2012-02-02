@@ -21,3 +21,7 @@ To try Ember.js and to display some interesting images on our music jukebox moni
 ## See it
 
 Images update every 3 minutes: [http://ffffridge.heroku.com/](http://ffffridge.heroku.com/)
+
+## Todo
+
+Update images by inserting new ones into the top of the layout rather than a full (lazy cop out!) page refresh
