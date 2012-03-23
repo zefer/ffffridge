@@ -6,14 +6,22 @@ Fridge.Image = Em.Object.extend({
 
 Fridge.imagesController = Em.ArrayProxy.create({
   content: [],
+  images: {},
 
+  // add this image to the display
   addImage: function(src) {
     var image = Fridge.Image.create({ src: src });
-    this.pushObject(image);
+    this.unshiftObject(image);
+    this.get('images')[src] = true;
   },
 
-  // display the images using Masonry
-  display: function() {
+  // is this image being displayed?
+  hasImage: function(src) {
+    return(typeof(Fridge.imagesController.get('images')[src]) != "undefined");
+  },
+
+  // inits the Masonry image display
+  initDisplay: function() {
     setTimeout(function() {
       var $container = $('#images');
       $container.imagesLoaded(function() {
@@ -26,22 +34,33 @@ Fridge.imagesController = Em.ArrayProxy.create({
     }, 100);
   },
 
+  // updates the Masonry layout to fit the newly prepended images
+  updateDisplay: function() {
+    var $container = $('#images');
+    $container.imagesLoaded(function() {
+      $('#images').masonry('reload');
+    });
+  },
+
   // load images from ffffound.com via YQL
-  updateImages: function() {
+  updateImages: function(init) {
     yql = "http://query.yahooapis.com/v1/public/yql?q=select%20title%2C%20link%2C%20description%2C%20author%2C%20pubDate%2C%20media%3Acontent%2C%20media%3Athumbnail%2C%20ffffound%3Asavedby%20from%20rss%20where%20url%3D%22http%3A%2F%2Ffeeds.feedburner.com%2Fffffound%2Feveryone%22&format=json&callback=?";
     $.getJSON(yql, function(data) {
-      data.query.results.item.forEach(function(item) {
-        Fridge.imagesController.addImage(item.content.url);
+      data.query.results.item.reverse().forEach(function(item) {
+        // add each image, unless it's already been added
+        if(!Fridge.imagesController.hasImage(item.content.url)) {
+          Fridge.imagesController.addImage(item.content.url);
+        }
       });
 
-      Fridge.imagesController.display();
+      init ? Fridge.imagesController.initDisplay() : Fridge.imagesController.updateDisplay();
     });
   }
 });
 
-Fridge.imagesController.updateImages();
+Fridge.imagesController.updateImages(true);
 
-// reload the page every 3 minutes - quick and ddddddirty
+// check for new images every 3 minutes
 setInterval(function() {
-  window.location = self.location;
+  Fridge.imagesController.updateImages();
 }, 180000);
