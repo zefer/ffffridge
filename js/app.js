@@ -1,7 +1,8 @@
 var Fridge = Em.Application.create();
 
 Fridge.Image = Em.Object.extend({
-  src: null
+  src: null,
+  link: null
 });
 
 Fridge.imagesController = Em.ArrayProxy.create({
@@ -9,8 +10,8 @@ Fridge.imagesController = Em.ArrayProxy.create({
   images: {},
 
   // add this image to the display
-  addImage: function(src) {
-    var image = Fridge.Image.create({ src: src });
+  addImage: function(src, link) {
+    var image = Fridge.Image.create({ src: src, link: link });
     this.unshiftObject(image);
     this.get('images')[src] = true;
   },
@@ -49,7 +50,7 @@ Fridge.imagesController = Em.ArrayProxy.create({
       data.query.results.item.reverse().forEach(function(item) {
         // add each image, unless it's already been added
         if(!Fridge.imagesController.hasImage(item.content.url)) {
-          Fridge.imagesController.addImage(item.content.url);
+          Fridge.imagesController.addImage(item.content.url, item.link);
         }
       });
 

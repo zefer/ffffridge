@@ -24,7 +24,7 @@
     <div id="images">
     {{#each Fridge.imagesController}}
       <div class="image-item">
-        <img {{bindAttr src="src"}} />
+        <a {{bindAttr href="link"}}><img {{bindAttr src="src"}} /></a>
       </div>
     {{/each}}
     </div>
