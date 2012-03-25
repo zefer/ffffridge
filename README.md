@@ -26,3 +26,4 @@ Images update every 3 minutes: [http://ffffridge.heroku.com/](http://ffffridge.h
 
 * Find more image sources and use Yahoo Pipes to merge them into a single RSS feed
 * Limit the number of images displayed to prevent excessive memory usage when it's been left running for ages
+* Convert to CoffeeScript
