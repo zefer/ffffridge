@@ -37,10 +37,12 @@ Fridge.imagesController = Em.ArrayProxy.create({
 
   // updates the Masonry layout to fit the newly prepended images
   updateDisplay: function() {
-    var $container = $('#images');
-    $container.imagesLoaded(function() {
-      $('#images').masonry('reload');
-    });
+    setTimeout(function() {
+      var $container = $('#images');
+      $container.imagesLoaded(function() {
+        $('#images').masonry('reload');
+      });
+    }, 100);
   },
 
   // load images from ffffound.com via YQL
